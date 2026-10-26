@@ -1,0 +1,9 @@
+# Default initial positions for px150's ros2_control fake system
+
+initial_positions:
+  elbow: 0.0
+  gripper: 0.0
+  shoulder: 0.0
+  waist: 0.0
+  wrist_pitch: 0.0
+  wrist_roll: 0.0

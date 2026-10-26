@@ -1,0 +1,14 @@
+# VS Code workspace settings
+/.vscode/
+**/.vscode/
+
+# ROS 2 / colcon build output
+/build/
+/install/
+/log/
+
+# Python generated files
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="px150">
+    <xacro:include filename="$(find custom_interbotix_xarms_description)/urdf/arm.xacro" />
+    <xacro:include filename="$(find custom_interbotix_xarms_description)/urdf/gripper.xacro" />
+    <xacro:include filename="$(find custom_interbotix_xarms_description)/urdf/px150.ros2_control.xacro" />
+
+    <xacro:arg name="initial_positions_file" default="$(find custom_interbotix_xarms_description)/config/initial_positions.yaml" />
+    <xacro:arg name="gz_sim" default="false" />
+
+    <link name="world"/>
+    <!-- Arm -->
+    <xacro:arm fixed_frame="world" tf_prefix=""/>
+    <!-- Gripper -->
+    <xacro:gripper tf_prefix="" attach_link="ee_arm_link"/>
+    <xacro:px150_ros2_control name="FakeSystem" initial_positions_file="$(arg initial_positions_file)" gz_sim="$(arg gz_sim)"/>
+    
+    <gazebo>
+        <plugin name="gz_ros2_control::GazeboSimROS2ControlPlugin" filename="gz_ros2_control-system">
+            <parameters>$(find custom_interbotix_xarms_description)/config/ros2_controllers.yaml</parameters>
+        </plugin>
+    </gazebo>
+</robot>

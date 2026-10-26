@@ -1,0 +1,25 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: custom_interbotix_xarms_description
+    relative_path: urdf/px150.urdf.xacro
+  srdf:
+    relative_path: config/px150.srdf
+  package_settings:
+    author_name: Daniel Sosa
+    author_email: dasc14@gmail.com
+    generated_timestamp: 1792536230
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity
+  modified_urdf:
+    xacros:
+      - control_xacro
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity
