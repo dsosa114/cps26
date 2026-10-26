@@ -69,3 +69,70 @@ git push -u origin <your-branch-name>
 ```
 
 You can customize your fork in any way. Changes to your fork do not affect the original repository.
+
+## Git & GitHub Quick Guide for Students
+
+Follow these commands to keep your workspace tidy, stay synchronized with the main class repository, and submit your contributions cleanly.
+
+| Category | Goal | Command | What It Does |
+| :--- | :--- | :--- | :--- |
+| **Clean Workspace** | Check current state | `git status` | Displays modified, staged, and untracked files. |
+| | Discard edits to a file | `git restore <file>` | Undoes uncommitted changes to return a file to its last commit. |
+| | Delete untracked build files | `git clean -fd` | Removes untracked files and directories (use `-nd` first to preview). |
+| | Clean up local branches | `git branch -d <branch-name>` | Safely deletes a local branch after it has been merged. |
+| | Remove obsolete remote references | `git remote prune origin` | Cleans up local references to branches deleted on GitHub. |
+| **Link Upstream** | Connect original repo | `git remote add upstream <original-repo-url>` | Links your local clone to the main class repository (run once). |
+| | Verify remotes | `git remote -v` | Confirms you have both `origin` (your fork) and `upstream` (class repo). |
+| **Update Fork** | Fetch upstream updates | `git fetch upstream` | Downloads commits and branches from the main repo without changing your files. |
+| | Update your local `main` | `git checkout main`<br>`git merge upstream/main` | Applies the latest updates from the main class repository into your local branch. |
+| | Sync your GitHub fork | `git push origin main` | Pushes updated class commits up to your personal GitHub repository. |
+| | Rebase personal branch | `git switch <your-branch>`<br>`git rebase upstream/main` | Moves your working branch forward onto the latest class updates. |
+| **Submit a PR** | 1. Create a work branch | `git switch -c feature/<task-name>` | Creates and jumps to an isolated branch for your assignment or feature. |
+| | 2. Save your changes | `git add .`<br>`git commit -m "feat: implement arm controller"` | Stages and records your changes with a clear summary message. |
+| | 3. Push to your fork | `git push -u origin feature/<task-name>` | Uploads your new branch to your personal fork on GitHub. |
+| | 4. Open Pull Request | Via GitHub Web UI or:<br>`gh pr create` | Go to GitHub, click **Compare & pull request**, set the base to upstream, and submit. |
+
+### Conceptual Workflow (Upstream vs. Origin vs. Local)
+
+Main Class Repository (upstream)
+                   ▲            │
+ Open a PR with    │            │ git fetch upstream
+  your changes     │            ▼
+                   │     Your Fork on GitHub (origin)
+                   │            ▲            │
+                   │            │ git push   │ git clone
+                   │            │            ▼
+                   └──────── Your Local Clone (your machine)
+
+---
+
+### Best Practices for Commits
+
+To keep the repository history clean and readable, follow the standard **Conventional Commits** format:
+
+`<type>: <short description in present tense and lowercase>`
+
+#### Common types:
+* **`feat:`** A new feature or functionality (e.g., `feat: add trajectory controller for arm`).
+* **`fix:`** A bug fix (e.g., `fix: correct lidar sensor orientation in urdf`).
+* **`docs:`** Documentation changes only (e.g., `docs: update build instructions in readme`).
+* **`refactor:`** Code changes that neither fix a bug nor add a feature (e.g., `refactor: modularize motor node functions`).
+* **`test:`** Adding or updating automated tests (e.g., `test: add unit tests for inverse kinematics`).
+
+#### Complete submission example workflow:
+```bash
+# 1. Ensure your local main branch is up-to-date with upstream
+git checkout main
+git fetch upstream
+git merge upstream/main
+git push origin main
+
+# 2. Create a dedicated work branch for your assignment
+git switch -c feature/kinematics-controller
+
+# 3. Stage changes and make organized commits
+git add .
+git commit -m "feat: implement analytical inverse kinematics solver"
+
+# 4. Push the branch to your GitHub fork
+git push -u origin feature/kinematics-controller
