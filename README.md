@@ -94,6 +94,7 @@ Follow these commands to keep your workspace tidy, stay synchronized with the ma
 
 ### Conceptual Workflow (Upstream vs. Origin vs. Local)
 
+```text
 Main Class Repository (upstream)
                    ▲            │
  Open a PR with    │            │ git fetch upstream
@@ -103,6 +104,7 @@ Main Class Repository (upstream)
                    │            │ git push   │ git clone
                    │            │            ▼
                    └──────── Your Local Clone (your machine)
+```
 
 ---
 
