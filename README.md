@@ -40,19 +40,3 @@ Launch the MoveIt demo:
 ```bash
 ros2 launch custom_interbotix_xarms_moveit demo.launch.py
 ```
-
-## Upload this folder to a new GitHub repository
-
-First, create a new **empty** repository on GitHub. Do not initialize it with a README, license, or `.gitignore`. Then run these commands in a terminal:
-
-```bash
-cd /home/daniel/Workspaces/cps26_ws/src
-git init
-git branch -M main
-git add README.md custom_interbotix_xarms_description custom_interbotix_xarms_moveit interbotix_arms_controller
-git commit -m "Add custom Interbotix PX150 ROS 2 packages"
-git remote add origin https://github.com/<your-username>/<your-repository>.git
-git push -u origin main
-```
-
-Replace `<your-username>` and `<your-repository>` with the GitHub account and repository name. The explicit `git add` paths include the README and ROS packages without adding the local `.vscode` workspace files.
