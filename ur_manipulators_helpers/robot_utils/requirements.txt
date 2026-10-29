@@ -1,0 +1,26 @@
+# Core
+numpy
+scipy
+pandas
+matplotlib
+sympy
+scikit-learn>=1.4   # root_mean_squared_error
+opencv-python
+
+# Robot control (robot_utils.py, robotiq_gripper.py)
+ur_rtde
+robodk
+swift-sim
+
+# Math / plotting helpers (math_utils.py, plot_utils.py)
+dtw-python
+rdp
+trimesh
+
+# Cameras / vision (camera_utils.py, ogl_viewer, cv_viewer)
+requests
+ultralytics
+PyOpenGL
+openni
+
+# Not installable from PyPI: pyzed (ZED SDK, https://www.stereolabs.com/docs/app-development/python/install)
